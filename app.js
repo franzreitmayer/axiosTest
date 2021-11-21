@@ -11,23 +11,27 @@ app.use(bodyParser.json());
 
 
 var base64;
-app.use("/static", express.static(path.join(__dirname,"static")));
+
+app.use("/static", express.static(path.join(__dirname, "static")));
 app.post("/byUrl", function(req, res) {
+    // get url from post parameter
     var url = req.body.url;
-    console.log(url);
+    console.log("file from " + url + " requested");
     axios({
         url: url, //your url
         method: 'GET',
         responseType: 'arraybuffer', // important
     }).then((response) => {
-        // var dataBlob = new buffer.Blob[response.data];
-        //console.log(dataBlob);
+        // encode file data to base64
         base64 = Buffer.from(response.data, 'binary').toString('base64');
         const byteChars = atob(base64);
-        // console.log(base64);
+
+
+        // send response containing file data as base64 encoded string
+        // with javascript code to decode to binary data
         res.status(200).send(`<htm><head><title>download</title>
-        </head><body><a id="a">Download</a>
-        <pre>Response Type: ${response.responseType}</pre>
+        <link href="/static/css/style.css" rel="stylesheet"/>
+        </head><body><a id="a">Download your file here</a>
         <pre>${JSON.stringify(response.headers, 1) }</pre>
         <script>var a="${base64}";
         const byteChars = atob(a);

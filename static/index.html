@@ -2,25 +2,38 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!==<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge"
+        http-equiv="X-UA-Compatible">
+  <title></title>
+  <meta content=""
+        name="description">
+  <meta content="width=device-width, initial-scale=1"
+        name="viewport">
+  <link href="/static/css/style.css"
+        rel="stylesheet">
+</head>
+<body>
+  <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1><center>Test</center></h1>
-        <form method="post" action="/byUrl">
-            <input type="text" value="here url" name="url"/>
-            <input type="submit" value="download" />
-        </form>
-        <script src="" async defer></script>
-    </body>
+  <center>
+    <h1>Download via HTML</h1>
+  </center>
+  <form action="/byUrl"
+        method="post">
+    <p>Enter download URL here: <input name="url"
+           size="100"
+           type="text"
+           value="&lt;&lt;enter here url&gt;&gt;"></p>
+    <p><input type="submit"
+           value="download"></p>
+  </form>
+  <script async
+        defer
+        src=""></script>
+</body>
 </html>
