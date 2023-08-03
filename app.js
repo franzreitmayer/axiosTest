@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 var base64;
 
 app.use("/static", express.static(path.join(__dirname, "static")));
-app.post("/byUrl", function(req, res) {
+app.post("/dwnd", function(req, res) {
     // get url from post parameter
     var urlBase64 = req.body.url;
     var url = atob(urlBase64);
