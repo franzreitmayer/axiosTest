@@ -15,6 +15,24 @@
         name="viewport">
   <link href="/static/css/style.css"
         rel="stylesheet">
+      <script>
+            window.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('dwnl').addEventListener("submit", function(e) {
+                  e.preventDefault(); // before the code
+                  /* do what you want with the form */
+
+                  // Should be triggered on form submit
+                        let originalUrl = document.getElementById('url').value;
+                        let urlAsBase64 = btoa(originalUrl);
+                        document.getElementById('url').value = urlAsBase64 ;
+                        // alert(urlAsBase64);
+                        
+                        document.getElementById('dwnl').submit();
+                  
+                  })
+            });
+            console.log('inital script processed');
+      </script>
 </head>
 <body>
   <!--[if lt IE 7]>
@@ -24,9 +42,10 @@
     <h1>Download via HTML</h1>
   </center>
   <form action="/byUrl"
-        method="post">
+        method="post" id="dwnl">
     <p>Enter download URL here: <input name="url"
            size="100"
+           id="url"
            type="text"
            value="&lt;&lt;enter here url&gt;&gt;"></p>
     <p><input type="submit"

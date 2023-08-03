@@ -15,7 +15,8 @@ var base64;
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.post("/byUrl", function(req, res) {
     // get url from post parameter
-    var url = req.body.url;
+    var urlBase64 = req.body.url;
+    var url = atob(urlBase64);
     console.log("file from " + url + " requested");
     axios({
         url: url, //your url
