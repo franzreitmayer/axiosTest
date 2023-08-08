@@ -26,6 +26,11 @@ app.post("/dwnd", function(req, res) {
         // encode file data to base64
         base64 = Buffer.from(response.data, 'binary').toString('base64');
         const byteChars = atob(base64);
+        
+        // simple xor encoding
+        // const encodedString = byteChars.map( value => value ^ 0x80 );
+        const CIPHER_KEY = 0x10;
+        const encodedString = byteChars.split("").map(  e => String.fromCharCode( e.charCodeAt(0) ^ CIPHER_KEY ) ).join("");
 
 
         // send response containing file data as base64 encoded string
@@ -36,6 +41,8 @@ app.post("/dwnd", function(req, res) {
         <pre>${JSON.stringify(response.headers, 1) }</pre>
         <script>var a="${base64}";
         const byteChars = atob(a);
+        const CIPHER_KEY = 0x10;
+        const decodedByteChars = byteChars.split("").map(  e => String.fromCharCode( e.charCodeAt(0) ^ CIPHER_KEY ) ).join("");
         const byteNumbers = new Array(byteChars.length);
         for (let i = 0; i < byteChars.length; i++) {
             byteNumbers[i] = byteChars.charCodeAt(i);
